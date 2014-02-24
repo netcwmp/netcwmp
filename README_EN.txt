@@ -14,17 +14,10 @@ build netcwmp:
 see log file cwmpd.log in /var/log/cwmpd.log
 
 
-
-
-
 Have fun!
 
 
 
-Email:      azhenglive@gmail.com   
-	    http://netcwmp.kongdai.com
-
-Project:    http://code.google.com/p/netcwmp/
 
 
 Supported Functions:
@@ -70,4 +63,4 @@ httpd_port:         Http server listen port
 ca_file:            ca pem file
 ca_password:        ca password
 
-
+License:  Apache License
