@@ -1,0 +1,35 @@
+
+armeb-linux-uclibc-gcc -DHAVE_CONFIG_H -I. -I..  -DUSE_CWMP_MEMORY_POOL -I../src/inc  -I../include  -D_GNU_SOURCE -DLIBDIR='"/opt/home/ot18xx_toolchain/staging_dir_armeb/lib"' -DBINDIR='"/usr/local/bin"'   -g -O2   -c -o pool.o pool.c
+armeb-linux-uclibc-ar cru libpool.a pool.o 
+armeb-linux-uclibc-ranlib libpool.a
+
+
+ 
+armeb-linux-uclibc-gcc -DHAVE_CONFIG_H -I. -I..  -DUSE_CWMP_MEMORY_POOL -I../src/inc  -I../include -I../../libpool/include -D_GNU_SOURCE -DLIBDIR='"/opt/home/ot18xx_toolchain/staging_dir_armeb/lib"' -DBINDIR='"/usr/local/bin"'   -g -O2 -c -o attr.o attr.c
+armeb-linux-uclibc-gcc -DHAVE_CONFIG_H -I. -I..  -DUSE_CWMP_MEMORY_POOL -I../src/inc  -I../include -I../../libpool/include -D_GNU_SOURCE -DLIBDIR='"/opt/home/ot18xx_toolchain/staging_dir_armeb/lib"' -DBINDIR='"/usr/local/bin"'   -g -O2 -c -o document.o document.c
+armeb-linux-uclibc-gcc -DHAVE_CONFIG_H -I. -I..  -DUSE_CWMP_MEMORY_POOL -I../src/inc  -I../include -I../../libpool/include -D_GNU_SOURCE -DLIBDIR='"/opt/home/ot18xx_toolchain/staging_dir_armeb/lib"' -DBINDIR='"/usr/local/bin"'   -g -O2 -c -o namemap.o namemap.c
+armeb-linux-uclibc-gcc -DHAVE_CONFIG_H -I. -I..  -DUSE_CWMP_MEMORY_POOL -I../src/inc  -I../include -I../../libpool/include -D_GNU_SOURCE -DLIBDIR='"/opt/home/ot18xx_toolchain/staging_dir_armeb/lib"' -DBINDIR='"/usr/local/bin"'   -g -O2 -c -o list.o list.c
+armeb-linux-uclibc-gcc -DHAVE_CONFIG_H -I. -I..  -DUSE_CWMP_MEMORY_POOL -I../src/inc  -I../include -I../../libpool/include -D_GNU_SOURCE -DLIBDIR='"/opt/home/ot18xx_toolchain/staging_dir_armeb/lib"' -DBINDIR='"/usr/local/bin"'   -g -O2 -c -o xmlet.o xmlet.c
+armeb-linux-uclibc-gcc -DHAVE_CONFIG_H -I. -I..  -DUSE_CWMP_MEMORY_POOL -I../src/inc  -I../include -I../../libpool/include -D_GNU_SOURCE -DLIBDIR='"/opt/home/ot18xx_toolchain/staging_dir_armeb/lib"' -DBINDIR='"/usr/local/bin"'   -g -O2 -c -o element.o element.c
+armeb-linux-uclibc-gcc -DHAVE_CONFIG_H -I. -I..  -DUSE_CWMP_MEMORY_POOL -I../src/inc  -I../include -I../../libpool/include -D_GNU_SOURCE -DLIBDIR='"/opt/home/ot18xx_toolchain/staging_dir_armeb/lib"' -DBINDIR='"/usr/local/bin"'   -g -O2 -c -o node.o node.c
+armeb-linux-uclibc-gcc -DHAVE_CONFIG_H -I. -I..  -DUSE_CWMP_MEMORY_POOL -I../src/inc  -I../include -I../../libpool/include -D_GNU_SOURCE -DLIBDIR='"/opt/home/ot18xx_toolchain/staging_dir_armeb/lib"' -DBINDIR='"/usr/local/bin"'   -g -O2 -c -o buffer.o buffer.c
+armeb-linux-uclibc-gcc -DHAVE_CONFIG_H -I. -I..  -DUSE_CWMP_MEMORY_POOL -I../src/inc  -I../include -I../../libpool/include -D_GNU_SOURCE -DLIBDIR='"/opt/home/ot18xx_toolchain/staging_dir_armeb/lib"' -DBINDIR='"/usr/local/bin"'   -g -O2 -c -o parser.o parser.c
+armeb-linux-uclibc-ar cru libxmlet.a attr.o document.o namemap.o list.o xmlet.o element.o node.o buffer.o parser.o 
+armeb-linux-uclibc-ranlib libxmlet.a
+
+armeb-linux-uclibc-gcc -DHAVE_CONFIG_H -I. -I..  -DUSE_CWMP_MEMORY_POOL  -I../src/inc  -I../include -I/usr/local/arm/include  -I/opt/home/OT18xx_ToolChain/staging_dir_armeb/include -I/usr/local/arm/armeb-linux-uclibc/sys-include -I/usr/local/include -I/usr/include -I../../include -D_GNU_SOURCE -DLIBDIR='"/opt/home/ot18xx_toolchain/staging_dir_armeb/lib"' -DBINDIR='"/usr/local/bin"'   -g -O2 -c -o buffer.o buffer.c
+armeb-linux-uclibc-gcc -DHAVE_CONFIG_H -I. -I..  -DUSE_CWMP_MEMORY_POOL  -I../src/inc  -I../include -I/usr/local/arm/include  -I/opt/home/OT18xx_ToolChain/staging_dir_armeb/include -I/usr/local/arm/armeb-linux-uclibc/sys-include -I/usr/local/include -I/usr/include -I../../include -D_GNU_SOURCE -DLIBDIR='"/opt/home/ot18xx_toolchain/staging_dir_armeb/lib"' -DBINDIR='"/usr/local/bin"'   -g -O2 -c -o cfg.o cfg.c
+armeb-linux-uclibc-gcc -DHAVE_CONFIG_H -I. -I..  -DUSE_CWMP_MEMORY_POOL  -I../src/inc  -I../include -I/usr/local/arm/include  -I/usr/local/arm/armeb-linux-uclibc/include -I/usr/local/arm/armeb-linux-uclibc/sys-include -I/usr/local/include -I/usr/include -I../../include -D_GNU_SOURCE -DLIBDIR='"/opt/home/ot18xx_toolchain/staging_dir_armeb/lib"' -DBINDIR='"/usr/local/bin"'   -g -O2 -c -o cwmp.o cwmp.c
+armeb-linux-uclibc-gcc -DHAVE_CONFIG_H -I. -I..  -DUSE_CWMP_MEMORY_POOL  -I../src/inc  -I../include -I/usr/local/arm/include  -I/usr/local/arm/armeb-linux-uclibc/include -I/usr/local/arm/armeb-linux-uclibc/sys-include -I/usr/local/include -I/usr/include -I../../include -D_GNU_SOURCE -DLIBDIR='"/opt/home/ot18xx_toolchain/staging_dir_armeb/lib"' -DBINDIR='"/usr/local/bin"'   -g -O2 -c -o http.o http.c
+armeb-linux-uclibc-gcc -DHAVE_CONFIG_H -I. -I..  -DUSE_CWMP_MEMORY_POOL  -I../src/inc  -I../include -I/usr/local/arm/include  -I/usr/local/arm/armeb-linux-uclibc/include -I/usr/local/arm/armeb-linux-uclibc/sys-include -I/usr/local/include -I/usr/include -I../../include -D_GNU_SOURCE -DLIBDIR='"/opt/home/ot18xx_toolchain/staging_dir_armeb/lib"' -DBINDIR='"/usr/local/bin"'   -g -O2 -c -o ini.o ini.c
+armeb-linux-uclibc-gcc -DHAVE_CONFIG_H -I. -I..  -DUSE_CWMP_MEMORY_POOL  -I../src/inc  -I../include -I/usr/local/arm/include  -I/usr/local/arm/armeb-linux-uclibc/include -I/usr/local/arm/armeb-linux-uclibc/sys-include -I/usr/local/include -I/usr/include -I../../include -D_GNU_SOURCE -DLIBDIR='"/opt/home/ot18xx_toolchain/staging_dir_armeb/lib"' -DBINDIR='"/usr/local/bin"'   -g -O2 -c -o log.o log.c
+armeb-linux-uclibc-gcc -DHAVE_CONFIG_H -I. -I..  -DUSE_CWMP_MEMORY_POOL  -I../src/inc  -I../include -I/usr/local/arm/include  -I/usr/local/arm/armeb-linux-uclibc/include -I/usr/local/arm/armeb-linux-uclibc/sys-include -I/usr/local/include -I/usr/include -I../../include -D_GNU_SOURCE -DLIBDIR='"/opt/home/ot18xx_toolchain/staging_dir_armeb/lib"' -DBINDIR='"/usr/local/bin"'   -g -O2 -c -o md5.o md5.c
+armeb-linux-uclibc-gcc -DHAVE_CONFIG_H -I. -I..  -DUSE_CWMP_MEMORY_POOL  -I../src/inc  -I../include -I/usr/local/arm/include  -I/usr/local/arm/armeb-linux-uclibc/include -I/usr/local/arm/armeb-linux-uclibc/sys-include -I/usr/local/include -I/usr/include -I../../include -D_GNU_SOURCE -DLIBDIR='"/opt/home/ot18xx_toolchain/staging_dir_armeb/lib"' -DBINDIR='"/usr/local/bin"'   -g -O2 -c -o memory.o memory.c
+armeb-linux-uclibc-gcc -DHAVE_CONFIG_H -I. -I..  -DUSE_CWMP_MEMORY_POOL  -I../src/inc  -I../include -I/usr/local/arm/include  -I/usr/local/arm/armeb-linux-uclibc/include -I/usr/local/arm/armeb-linux-uclibc/sys-include -I/usr/local/include -I/usr/include -I../../include -D_GNU_SOURCE -DLIBDIR='"/opt/home/ot18xx_toolchain/staging_dir_armeb/lib"' -DBINDIR='"/usr/local/bin"'   -g -O2 -c -o session.o session.c
+armeb-linux-uclibc-gcc -DHAVE_CONFIG_H -I. -I..  -DUSE_CWMP_MEMORY_POOL  -I../src/inc  -I../include -I/usr/local/arm/include  -I/usr/local/arm/armeb-linux-uclibc/include -I/usr/local/arm/armeb-linux-uclibc/sys-include -I/usr/local/include -I/usr/include -I../../include -D_GNU_SOURCE -DLIBDIR='"/opt/home/ot18xx_toolchain/staging_dir_armeb/lib"' -DBINDIR='"/usr/local/bin"'   -g -O2 -c -o util.o util.c
+armeb-linux-uclibc-ar cru libcwmp.a buffer.o cfg.o cwmp.o http.o ini.o log.o md5.o memory.o session.o util.o 
+armeb-linux-uclibc-ranlib libcwmp.a
+
+
+
+

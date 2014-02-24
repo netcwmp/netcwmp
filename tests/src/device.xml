@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cwmp>
+  
+  <model>
+    <object name="InternetGatewayDevice">
+      <param name="DeviceSummary"                     get_func="TRF_Get_DeviceSummary"></param>
+      <param name="LANDeviceNumberOfEntries"  get_func="TRF_Get_LANDeviceNumberOfEntries"></param>
+      <param name="WANDeviceNumberOfEntries"  get_func="TRF_Get_WANDeviceNumberOfEntries"></param>
+      <object name="DeviceInfo">
+        <param name="SpecVersion"               get_func="cpe_get_igd_di_specversion"></param>
+        <param name="HardwareVersion"           get_func="cpe_get_igd_di_hardwareversion"></param>
+        <param name="SoftwareVersion"   rw="1"  get_func="cpe_get_igd_di_softwareversion"  set_func="cpe_set_igd_di_softwareversion"></param>
+        <param name="ProvisioningCode"  rw="1"  get_func="cpe_get_igd_di_provisioningcode" set_func="cpe_set_igd_di_provisioningcode"></param>
+        <param name="Manufacturer"              get_func="cpe_get_igd_di_manufacturer"></param>
+        <param name="ManufacturerOUI"           get_func="cpe_get_igd_di_manufactureroui"></param>
+        <param name="ProductClass"              get_func="cpe_get_igd_di_productclass"></param>
+        <param name="SerialNumber"              get_func="cpe_get_igd_di_serialnumber"></param>
+        <object name="X_CT-COM_LoadInfo">
+          <param name="ProcessorLoad"   get_func="TRF_Get_ProcessorLoad"></param>
+          <param name="MemoryLoad" 	    get_func="TRF_Get_MemoryLoad"></param>
+        </object>
+      </object>
+      <object name="ManagementServer">
+        <param name="ConnectionRequestURL"   get_func="cpe_get_igd_ms_connectionrequesturl"></param>
+        <param name="ConnectionRequestUsername"     rw="1"      noti_rw="1"  get_func="cpe_get_igd_ms_connectionrequestusername" set_func="cpe_set_igd_ms_connectionrequestusername"></param>
+        <param name="ConnectionRequestPassword"     rw="1"      noti_rw="1"  get_func="cpe_get_igd_ms_connectionrequestpassword" set_func="cpe_set_igd_ms_connectionrequestpassword"></param>
+        <param name="Username"                      rw="1"      noti_rw="1"  get_func="cpe_get_igd_ms_username"      set_func="cpe_set_igd_ms_username"></param>
+        <param name="Password"                      rw="1"      noti_rw="1"  get_func="cpe_get_igd_ms_password"     set_func="cpe_set_igd_ms_password"></param>
+        <param name="URL"          noti_rw="1"      rw="1"                   get_func="cpe_get_igd_ms_url"  set_func="cpe_get_igd_ms_url"></param>
+        <param name="PeriodicInformEnable"          rw="1" noti_rw="1" type="s" get_func="TRF_Get_MS_PeriodicInformEnable"      set_func="TRF_Set_MS_PeriodicInformEnable"></param>
+        <param name="PeriodicInformInterval"        rw="1" noti_rw="1"  get_func="TRF_Get_MS_PeriodicInformInterval"    set_func="TRF_Set_MS_PeriodicInformInterval"></param>
+        <param name="PeriodicInformTime"            rw="1"          type="s" get_func="TRF_Get_MS_PeriodicInformTime"        set_func="TRF_Set_MS_PeriodicInformTime"></param>
+        <param name="ParameterKey" 						 get_func="TRF_Get_MS_ParameterKey" set_func="TRF_Set_MS_ParameterKey"/>
+        <param name="UDPConnectionRequestAddress"                            get_func="TRF_Get_MS_UDPConnectionRequestAddress" set_func="TRF_Set_MS_UDPConnectionRequestAddress"></param>
+        <param name="UDPConnectionRequestAddressNotificationLimit"   get_func="TRF_Get_MS_UDPConnectionNotficationLimit"></param>
+        <param name="STUNEnable"                    rw="1"          type="s" get_func="TRF_Get_MS_STUNEnable"        set_func="TRF_Set_MS_STUNEnable"></param>
+        <param name="STUNServerAddress"             rw="1"                   get_func="TRF_Get_MS_STUNServerAddress" set_func="TRF_Set_MS_STUNServerAddress"></param>
+        <param name="STUNServerPort"                rw="1"           get_func="TRF_Get_MS_STUNServerPort"    set_func="TRF_Set_MS_STUNServerPort"></param>
+        <param name="STUNUsername"                  rw="1"                   get_func="TRF_Get_MS_STUNUsername"      set_func="TRF_Set_MS_STUNUsername"></param>
+        <param name="STUNPassword"                  rw="1"                   get_func="TRF_Get_MS_STUNPassword"      set_func="TRF_Set_MS_STUNPassword"></param>
+        <param name="STUNMaximumKeepAlivePeriod"    rw="1"          type="s" get_func="TRF_Get_MS_STUNMaxPeriod"     set_func="TRF_Set_MS_STUNMaxPeriod"></param>
+        <param name="STUNMinimumKeepAlivePeriod"    rw="1"          type="s" get_func="TRF_Get_MS_STUNMinPeriod"     set_func="TRF_Set_MS_STUNMinPeriod"></param>
+        <param name="NATDetected"                                   type="s" get_func="TRF_Get_MS_NATDetected"       set_func="TRF_Set_MS_NATDetected"></param>
+      </object>
+      <object name="WANDevice" rw="1" refresh_func="TRF_Refresh_WANDevice">
+        <object name="{i}">
+          <param name="WANConnectionNumberOfEntries"  get_func="TRF_Get_WANConnectionNumberOfEntries"></param>
+          <object name="WANConnectionDevice" refresh_func="TRF_Refresh_WANConnection">
+            <object name="{i}">
+              <param name="WANIPConnectionNumberOfEntries"    get_func="TRF_Get_WANIPConnectionNumberOfEntries"></param>
+              <param name="WANPPPConnectionNumberOfEntries"   get_func="TRF_Get_WANPPPConnectionNumberOfEntries"></param>
+              <object name="WANIPConnection"  refresh_func="TRF_Refresh_WANIPorPPPConnection">
+                <object name="{i}">
+                  <param name="Enable"   		rw="1"		type="s" get_func="TRF_Get_WANIP_Enable" set_func="TRF_Set_WANIP_Enable"></param>
+                  <param name="AddressingType"  noti_rw="1"	rw="1"   get_func="TRF_Get_WANIP_AddressingType" set_func="TRF_Set_WANIP_AddressingType"></param>
+                  <param name="ExternalIPAddress" noti_rw="1" rw="1"   get_func="TRF_Get_WANIP_ExternalIPAddress" set_func="TRF_Set_WANIP_ExternalIPAddress"></param>
+                  <param name="SubnetMask"   	noti_rw="1"	rw="1"   get_func="TRF_Get_WANIP_SubnetMask" set_func="TRF_Set_WANIP_SubnetMask"></param>
+                  <param name="DefaultGateway"   			rw="1"   get_func="TRF_Get_WANIP_DefaultGateway" set_func="TRF_Set_WANIP_DefaultGateway"></param>
+                  <param name="DNSServers"   				rw="1"   get_func="TRF_Get_WANIP_DNSServers" set_func="TRF_Set_WANIP_DNSServers"></param>
+                  <param name="MACAddress"   				rw="1"   get_func="TRF_Get_WANIP_MACAddress" set_func="TRF_Set_WANIP_MACAddress"></param>
+                  <object name="Stats">
+                    <param name="EthernetBytesSent"   					 get_func="TRF_Get_WAN_Stats_BytesSent"></param>
+                    <param name="EthernetBytesReceived"   				 get_func="TRF_Get_WAN_Stats_BytesReceived"></param>
+                    <param name="EthernetPacketsSent"   				 get_func="TRF_Get_WAN_Stats_PacketsSent"></param>
+                    <param name="EthernetPacketsReceived"   			 get_func="TRF_Get_WAN_Stats_PacketsReceived"></param>
+                  </object>
+                </object>
+              </object>
+              <object name="WANPPPConnection" refresh_func="TRF_Refresh_WANIPorPPPConnection">
+                <object name="{i}">
+                  <param name="Enable"   			rw="1"	type="s" get_func="TRF_Get_WANPPP_Enable" set_func="TRF_Set_WANPPP_Enable"></param>
+                  <param name="DefaultGateway"  					 get_func="TRF_Get_WANPPP_DefaultGateway"></param>
+                  <param name="Username" noti_rw="1" rw="1"			 get_func="TRF_Get_WANPPP_Username" set_func="TRF_Set_WANPPP_Username"></param>
+                  <param name="Password" noti_rw="1" rw="1"			 get_func="TRF_Get_WANPPP_Password" set_func="TRF_Set_WANPPP_Password"></param>
+                  <param name="ExternalIPAddress" 					 get_func="TRF_Get_WANPPP_ExternalIPAddress"></param>
+                  <param name="DNSServers"   		rw="1"			 get_func="TRF_Get_WANPPP_DNSServers" set_func="TRF_Set_WANPPP_DNSServers"></param>
+                  <param name="MACAddress"   		rw="1"	type="s" get_func="TRF_Get_WANPPP_MACAddress" set_func="TRF_Set_WANPPP_MACAddress"></param>
+                  <param name="ConnectionTrigger"	rw="1"			 get_func="TRF_Get_WANPPP_ConnectionTrigger" set_func="TRF_Set_WANPPP_ConnectionTrigger"></param>
+				  <object name="Stats">
+					<param name="EthernetBytesSent"   					 get_func="TRF_Get_WAN_Stats_BytesSent"></param>
+					<param name="EthernetBytesReceived"   				 get_func="TRF_Get_WAN_Stats_BytesReceived"></param>
+					<param name="EthernetPacketsSent"   				 get_func="TRF_Get_WAN_Stats_PacketsSent"></param>
+					<param name="EthernetPacketsReceived"   			 get_func="TRF_Get_WAN_Stats_PacketsReceived"></param>
+				  </object>
+                </object>
+              </object>
+            </object>
+          </object>
+        </object>
+      </object>
+      <object name="IPPingDiagnostics">
+        <param name="DiagnosticsState"    rw="1"          	get_func="TRF_Get_Ping_DiagnosticsState"    set_func="TRF_Set_Ping_DiagnosticsState"></param>
+        <param name="Interface"           rw="1"   			get_func="TRF_Get_Ping_Interface"  		   set_func="TRF_Set_Ping_Interface"></param>
+        <param name="Host"                rw="1"			get_func="TRF_Get_Ping_Host" 			   set_func="TRF_Set_Ping_Host"></param>
+        <param name="NumberOfRepetitions" rw="1"    get_func="TRF_Get_Ping_NumberOfRepetitions" set_func="TRF_Set_Ping_NumberOfRepetitions"></param>
+        <param name="Timeout"             rw="1"    get_func="TRF_Get_Ping_Timeout" 			   set_func="TRF_Set_Ping_Timeout"></param>
+        <param name="DataBlockSize"       rw="1"    get_func="TRF_Get_Ping_DataBlockSize"       set_func="TRF_Set_Ping_DataBlockSize"></param>
+        <param name="DSCP"                rw="1"    get_func="TRF_Get_Ping_DSCP" 			   set_func="TRF_Set_Ping_DSCP"></param>
+        <param name="SuccessCount"                  get_func="TRF_Get_Ping_SuccessCount"></param>
+        <param name="FailureCount"                  get_func="TRF_Get_Ping_FailureCount"></param>
+        <param name="AverageResponseTime"           get_func="TRF_Get_Ping_AverageResponseTime"></param>
+        <param name="MinimumResponseTime"           get_func="TRF_Get_Ping_MinimumResponseTime"></param>
+        <param name="MaximumResponseTime"           get_func="TRF_Get_Ping_MaximumResponseTime"></param>
+      </object>
+      <object name="TraceRouteDiagnostics">
+        <param name="DiagnosticsState"   rw="1"             get_func="TRF_Get_Traceroute_DiagnosticsState" set_func="TRF_Set_Traceroute_DiagnosticsState"></param>
+        <param name="Interface"          rw="1"    		    get_func="TRF_Get_Traceroute_Interface" 		  set_func="TRF_Set_Traceroute_Interface"></param>
+        <param name="Host"               rw="1" 			get_func="TRF_Get_Traceroute_Host" 			  set_func="TRF_Set_Traceroute_Host"></param>
+        <param name="NumberOfTries"      rw="1"     get_func="TRF_Get_Traceroute_NumberOfTries" 	  set_func="TRF_Set_Traceroute_NumberOfTries"></param>
+        <param name="Timeout"            rw="1"     get_func="TRF_Get_Traceroute_Timeout" 		  set_func="TRF_Set_Traceroute_Timeout"></param>
+        <param name="DataBlockSize"      rw="1"     get_func="TRF_Get_Traceroute_DataBlockSize" 	  set_func="TRF_Set_Traceroute_DataBlockSize"></param>
+        <param name="DSCP"               rw="1"     get_func="TRF_Get_Traceroute_DSCP" 			  set_func="TRF_Set_Traceroute_DSCP"></param>
+        <param name="MaxHopCount"        rw="1"     get_func="TRF_Get_Traceroute_MaxHopCount" 	  set_func="TRF_Set_Traceroute_MaxHopCount"></param>
+        <param name="ResponseTime"                	get_func="TRF_Get_Traceroute_ResponseTime"></param>
+        <param name="RouteHopsNumberOfEntries"      get_func="TRF_Get_Traceroute_RouteHopsNumberOfEntries"></param>
+        <object name="RouteHops" refresh_func="TRF_Refresh_RouteHops">
+          <object name="{i}">
+            <param name="HopHost"              				get_func="TRF_Get_Traceroute_HopHost"></param>
+            <param name="HopHostAddress"              		get_func="TRF_Get_Traceroute_HopHostAddress"></param>
+            <param name="HopErrorCode"           	get_func="TRF_Get_Traceroute_HopErrorCode"></param>
+            <param name="HopRTTimes"              			get_func="TRF_Get_Traceroute_HopRTTimes"></param>
+          </object>
+        </object>
+      </object>
+      <object name="X_CT-COM_HttpGetDiagnostics">
+        <param name="DiagnosticsState"   rw="1"             get_func="TRF_Get_HttpGet_DiagnosticsState" 	set_func="TRF_Set_HttpGet_DiagnosticsState"></param>
+        <param name="Interface"          rw="1"    		    get_func="TRF_Get_HttpGet_Interface" 		set_func="TRF_Set_HttpGet_Interface"></param>
+        <param name="URL"          		 rw="1"    		    get_func="TRF_Get_HttpGet_URL" 		  		set_func="TRF_Set_HttpGet_URL"></param>
+        <param name="HttpVersion"        rw="1"    		    get_func="TRF_Get_HttpGet_HttpVersion" 		set_func="TRF_Set_HttpGet_HttpVersion"></param>
+        <param name="NumberOfRepetitions" rw="1"    get_func="TRF_Get_HttpGet_NumberOfRepetitions" set_func="TRF_Set_HttpGet_NumberOfRepetitions"></param>
+        <param name="Timeout"          	  rw="1"    get_func="TRF_Get_HttpGet_Timeout" 		  	set_func="TRF_Set_HttpGet_Timeout"></param>
+        <param name="SuccessCount"        		    get_func="TRF_Get_HttpGet_SuccessCount"></param>
+        <param name="FailureCount"				    get_func="TRF_Get_HttpGet_FailureCount"></param>
+        <param name="MinimumResponseTime"           get_func="TRF_Get_HttpGet_MinimumResponseTime"></param>
+        <param name="MaximumResponseTime"           get_func="TRF_Get_HttpGet_MaximumResponseTime"></param>
+        <param name="AverageResponseTime"           get_func="TRF_Get_HttpGet_AverageResponseTime"></param>
+      </object>
+      <object name="X_CT-COM_DNSQueryDiagnostics">
+        <param name="DiagnosticsState"   rw="1"             get_func="TRF_Get_DNSQuery_DiagnosticsState" 	set_func="TRF_Set_DNSQuery_DiagnosticsState"></param>
+        <param name="Interface"          rw="1"    		    get_func="TRF_Get_DNSQuery_Interface" 			set_func="TRF_Set_DNSQuery_Interface"></param>
+        <param name="DNSServerIP"        rw="1"    		    get_func="TRF_Get_DNSQuery_DNSServerIP" 		  	set_func="TRF_Set_DNSQuery_DNSServerIP"></param>
+        <param name="DomainName"         rw="1"    		    get_func="TRF_Get_DNSQuery_DomainName" 		  	set_func="TRF_Set_DNSQuery_DomainName"></param>
+        <param name="NumberOfRepetitions" rw="1"    get_func="TRF_Get_DNSQuery_NumberOfRepetitions"  set_func="TRF_Set_DNSQuery_NumberOfRepetitions"></param>
+        <param name="Timeout"          	  rw="1"    get_func="TRF_Get_DNSQuery_Timeout" 		  	    set_func="TRF_Set_DNSQuery_Timeout"></param>
+        <param name="SuccessCount"        		    get_func="TRF_Get_DNSQuery_SuccessCount"></param>
+        <param name="FailureCount"				    get_func="TRF_Get_DNSQuery_FailureCount"></param>
+        <param name="MinimumResponseTime"           get_func="TRF_Get_DNSQuery_MinimumResponseTime"></param>
+        <param name="MaximumResponseTime"           get_func="TRF_Get_DNSQuery_MaximumResponseTime"></param>
+        <param name="AverageResponseTime"           get_func="TRF_Get_DNSQuery_AverageResponseTime"></param>
+        <param name="ResponseParaList"						get_func="TRF_Get_DNSQuery_ResponseParaList"></param>
+      </object>
+    </object>
+  </model>
+  
+  
+  
+  
+  <inform>
+    <paramlist>
+      <param name="" />
+      
+    </paramlist>
+  </inform>
+  <rpc>
+    <init name="dev_init"></init>
+    <bootstrap name="dev_bootstrap"></bootstrap>
+    <factoryreset name="dev_factoryreset"></factoryreset>
+    <download name="dev_download"></download>
+    <upload name="dev_upload"></upload>
+    <reboot name="dev_reboot"></reboot>
+    <auth name="dev_get_auth"></auth>
+  
+  </rpc>
+  
+  <devlib name="/usr/lib/libotnms.so" />
+  
+
+  <listenport name="dev_get_listenport"></listenport>
+  
+  <wanparamname name="dev_get_wan_para"></wanparamname>
+  
+  
+ 
+</cwmp>

@@ -1,0 +1,3 @@
+md5.o: md5.c ../../libcwmp/include/cwmp/md5.h
+
+../../libcwmp/include/cwmp/md5.h:

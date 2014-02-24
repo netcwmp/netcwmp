@@ -1,0 +1,149 @@
+#                                               -*- Autoconf -*-
+# Process this file with autoconf to produce a configure script.
+
+AC_PREREQ(2.59)
+AC_INIT(library, 1.0, support@itibia.com)
+AC_CONFIG_AUX_DIR([build])
+AM_INIT_AUTOMAKE([-Wall -Werror foreign])
+AC_CONFIG_SRCDIR([])
+AC_CONFIG_HEADER([config.h])
+
+#AC_PREFIX_DEFAULT([])
+
+# Checks for programs.
+AC_PROG_CXX(g++)
+AC_PROG_CC(gcc g++)
+AC_PROG_MAKE_SET
+AC_PROG_CPP
+AC_PROG_LIBTOOL
+AC_PROG_RANLIB
+
+# Checks for libraries.
+#AC_CHECK_LIB([rt], [mq_open])
+
+# Checks for header files.
+AC_HEADER_DIRENT
+AC_HEADER_STDC
+AC_HEADER_SYS_WAIT
+AC_CHECK_HEADERS([arpa/inet.h fcntl.h inttypes.h malloc.h netdb.h netinet/in.h stdint.h stdlib.h string.h strings.h sys/ioctl.h sys/socket.h sys/time.h syslog.h unistd.h ])
+
+
+# Checks for typedefs, structures, and compiler characteristics.
+AC_HEADER_STDBOOL
+AC_C_CONST
+AC_TYPE_UID_T
+AC_C_INLINE
+AC_TYPE_PID_T
+AC_TYPE_SIZE_T
+AC_STRUCT_TM
+
+# Checks for library functions.
+AC_FUNC_ALLOCA
+AC_FUNC_CHOWN
+AC_FUNC_CLOSEDIR_VOID
+AC_FUNC_FORK
+AC_PROG_GCC_TRADITIONAL
+#comment it to prevent autoconf #define HAVE_MALLOC to 0 and #define malloc to rpl_malloc
+#AC_FUNC_MALLOC
+#AC_FUNC_MKTIME
+#AC_FUNC_REALLOC
+AC_FUNC_SELECT_ARGTYPES
+AC_TYPE_SIGNAL
+AC_FUNC_STAT
+AC_FUNC_STRFTIME
+#check machine endian
+AC_C_BIGENDIAN
+
+AC_CHECK_SIZEOF(int,[])
+AC_CHECK_SIZEOF(short,[])
+AC_CHECK_SIZEOF(long,[])
+AC_CHECK_SIZEOF(float,[])
+AC_CHECK_SIZEOF(double,[])
+
+AC_TYPE_PID_T
+AC_TYPE_SIZE_T
+
+AC_CHECK_FUNCS([alarm bzero endgrent endpwent getcwd gethostbyname inet_ntoa isascii localtime_r memmove memset mkdir regcomp select socket strcasecmp strchr strcspn strdup strerror strncasecmp strrchr strspn strstr])
+
+AC_CONFIG_FILES([Makefile
+libpool/src/Makefile libxmlet/src/Makefile libcwmp/src/Makefile
+	cwmpd/src/Makefile  tests/src/Makefile
+		])
+
+
+
+#save user-provided flags
+save_CXXFLAGS="$CXXFLAGS"
+save_CFLAGS="-Wall -g"
+save_LDFALGS="$LDFLAGS"
+save_CPPFLAGS="-Wall -g"
+
+#restore user-provided flags
+CXXFLAGS="$save_CXXFLAGS"
+CFLAGS="$save_CFLAGS "
+#Note that sysconfdir is expaned in Makefile other than here, check generated configure script, u can see 
+#sysconfdir is surrounded by single quotas to prevent expansion.
+CPPFLAGS="-D_GNU_SOURCE $save_CPPFLAGS"
+
+LDFLAGS="$save_LDFALGS"
+
+#CPPFLAGS="$CPPFLAGS -DUSE_CWMP_OPENSSL"
+OPENSSL_DIR=no
+
+AC_ARG_WITH(openssl, --with-openssl=<path>     sets path to temp directory, OPENSSL_DIR=$withval, OPENSSL_DIR=no)
+
+if test x"$OPENSSL_DIR" != "xno"; then
+ 	CPPFLAGS="$CPPFLAGS -DUSE_CWMP_OPENSSL -I$OPENSSL_DIR/include"	
+	LDFLAGS="$LDFLAGS -L$OPENSSL_DIR/lib -lssl"
+fi
+AC_SUBST(OPENSSL_DIR)
+
+#LIBS will be appended to gcc command, so it must be cleared to prevent unnecessary linking
+#LIBS=""
+
+
+
+
+#AC_CANONICAL_BUILD
+#AC_CANONICAL_HOST
+
+AH_TEMPLATE([BUILD_CPU], [cpu type used in building environment])
+if test "x$build_cpu" != "x"; then
+	BUILD_CPU="$build_cpu"
+	AC_SUBST([BUILD_CPU])
+	AC_DEFINE_UNQUOTED([BUILD_CPU], [$build_cpu], [])
+fi
+AH_TEMPLATE([BUILD_VENDOR], [cpu vendor in building environment])
+if test "x$build_vendor" != "x"; then
+	BUILD_VENDOR="$build_vendor"
+	AC_SUBST([BUILD_VENDOR])
+	AC_DEFINE_UNQUOTED([BUILD_VENDOR], [$build_vendor], [])
+fi
+AH_TEMPLATE([BUILD_OS], [os of building environment])
+if test "x$build_os" != "x"; then
+	BUILD_OS="$build_os"
+	AC_SUBST([BUILD_OS])
+	AC_DEFINE_UNQUOTED([BUILD_OS], [$build_os], [])
+fi
+
+AH_TEMPLATE([HOST_CPU], [cpu type of host environment])
+if test "x$host_cpu" != "x"; then
+	HOST_CPU="$host_cpu"
+	AC_SUBST([HOST_CPU])
+	AC_DEFINE_UNQUOTED([HOST_CPU], [$host_cpu], [])
+fi
+AH_TEMPLATE([HOST_VENDOR], [cpu vendor of host environment])
+if test "x$host_vendor" != "x"; then
+	HOST_VENDOR="$host_vendor"
+	AC_SUBST([HOST_VENDOR])
+	AC_DEFINE_UNQUOTED([HOST_VENDOR], [$host_vendor], [])
+fi
+AH_TEMPLATE([HOST_OS], [os of host environment])
+if test "x$host_os" != "x"; then
+	HOST_OS="$host_os"
+	AC_SUBST([HOST_OS])
+	AC_DEFINE_UNQUOTED([HOST_OS], [$host_os], [])
+fi
+
+AM_CONDITIONAL([COMPILE_FOR_MIPS], [ test "$target" = "mips64-octeon-linux-gnu" ])
+AC_OUTPUT

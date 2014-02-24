@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cwmp>
+  
+  <model>
+    <object name="InternetGatewayDevice">
+      <param name="DeviceSummary"                     get_func="TRF_Get_DeviceSummary"></param>
+      <param name="LANDeviceNumberOfEntries"  get_func="TRF_Get_LANDeviceNumberOfEntries"></param>
+      <param name="WANDeviceNumberOfEntries"  get_func="TRF_Get_WANDeviceNumberOfEntries"></param>
+      <object name="DeviceInfo">
+        <param name="SpecVersion"               get_func="cpe_get_igd_di_specversion"></param>
+        <param name="HardwareVersion"           get_func="cpe_get_igd_di_hardwareversion"></param>
+        <param name="SoftwareVersion"   rw="1"  get_func="cpe_get_igd_di_softwareversion"  set_func="cpe_set_igd_di_softwareversion"></param>
+        <param name="ProvisioningCode"  rw="1"  get_func="cpe_get_igd_di_provisioningcode" set_func="cpe_set_igd_di_provisioningcode"></param>
+        <param name="Manufacturer"              get_func="cpe_get_igd_di_manufacturer"></param>
+        <param name="ManufacturerOUI"           get_func="cpe_get_igd_di_manufactureroui"></param>
+        <param name="ProductClass"              get_func="cpe_get_igd_di_productclass"></param>
+        <param name="SerialNumber"              get_func="cpe_get_igd_di_serialnumber"></param>
+      </object>
+      <object name="ManagementServer">
+        <param name="ConnectionRequestURL"   get_func="cpe_get_igd_ms_connectionrequesturl"></param>
+        <param name="ConnectionRequestUsername"     rw="1"      noti_rw="1"  get_func="cpe_get_igd_ms_connectionrequestusername" set_func="cpe_set_igd_ms_connectionrequestusername"></param>
+        <param name="ConnectionRequestPassword"     rw="1"      noti_rw="1"  get_func="cpe_get_igd_ms_connectionrequestpassword" set_func="cpe_set_igd_ms_connectionrequestpassword"></param>
+        <param name="Username"                      rw="1"      noti_rw="1"  get_func="cpe_get_igd_ms_username"      set_func="cpe_set_igd_ms_username"></param>
+        <param name="Password"                      rw="1"      noti_rw="1"  get_func="cpe_get_igd_ms_password"     set_func="cpe_set_igd_ms_password"></param>
+        <param name="URL"          noti_rw="1"      rw="1"                   get_func="cpe_get_igd_ms_url"  set_func="cpe_get_igd_ms_url"></param>
+        <param name="PeriodicInformEnable"          rw="1" noti_rw="1" type="s" get_func=""      set_func=""></param>
+        <param name="PeriodicInformInterval"        rw="1" noti_rw="1"  get_func=""    set_func=""></param>
+        <param name="PeriodicInformTime"            rw="1"          type="s" get_func=""        set_func=""></param>
+        <param name="ParameterKey" 						 get_func="" set_func=""/>
+        <param name="UDPConnectionRequestAddress"                            get_func="" set_func=""></param>
+        <param name="UDPConnectionRequestAddressNotificationLimit"   get_func=""></param>
+        <param name="STUNEnable"                    rw="1"          type="s" get_func=""        set_func=""></param>
+        <param name="STUNServerAddress"             rw="1"                   get_func="" set_func=""></param>
+        <param name="STUNServerPort"                rw="1"           get_func=""    set_func=""></param>
+        <param name="STUNUsername"                  rw="1"                   get_func=""      set_func=""></param>
+        <param name="STUNPassword"                  rw="1"                   get_func=""      set_func=""></param>
+        <param name="STUNMaximumKeepAlivePeriod"    rw="1"          type="s" get_func=""     set_func=""></param>
+        <param name="STUNMinimumKeepAlivePeriod"    rw="1"          type="s" get_func=""     set_func=""></param>
+        <param name="NATDetected"                                   type="s" get_func=""       set_func=""></param>
+      </object>
+      <object name="WANDevice" rw="1" refresh_func="cpe_refresh_igd_wandevice">
+        <object name="{i}">
+          <param name="WANConnectionNumberOfEntries"  get_func=""></param>
+          <object name="WANConnectionDevice" refresh_func="cpe_refresh_igd_wandevice_wanconnection">
+            <object name="{i}">
+              <param name="WANIPConnectionNumberOfEntries"    get_func=""></param>
+              <param name="WANPPPConnectionNumberOfEntries"   get_func=""></param>
+              <object name="WANIPConnection"  refresh_func="cpe_refresh_igd_wandevice_wanconnection_wanipconnection">
+                <object name="{i}">
+                  <param name="Enable"   		rw="1"		type="s" get_func="" set_func=""></param>
+                  <param name="AddressingType"  noti_rw="1"	rw="1"   get_func="" set_func=""></param>
+                  <param name="ExternalIPAddress" noti_rw="1" rw="1"   get_func="" set_func=""></param>
+                  <param name="SubnetMask"   	noti_rw="1"	rw="1"   get_func="" set_func=""></param>
+                  <param name="DefaultGateway"   			rw="1"   get_func="" set_func=""></param>
+                  <param name="DNSServers"   				rw="1"   get_func="" set_func=""></param>
+                  <param name="MACAddress"   				rw="1"   get_func="" set_func=""></param>
+                  <object name="Stats">
+                    <param name="EthernetBytesSent"   					 get_func=""></param>
+                    <param name="EthernetBytesReceived"   				 get_func=""></param>
+                    <param name="EthernetPacketsSent"   				 get_func=""></param>
+                    <param name="EthernetPacketsReceived"   			 get_func=""></param>
+                  </object>
+                </object>
+              </object>
+              <object name="WANPPPConnection" refresh_func="cpe_refresh_igd_wandevice_wanconnection_wanpppconnection">
+                <object name="{i}">
+                  <param name="Enable"   			rw="1"	type="s" get_func="" set_func=""></param>
+                  <param name="DefaultGateway"  					 get_func=""></param>
+                  <param name="Username" noti_rw="1" rw="1"			 get_func="" set_func=""></param>
+                  <param name="Password" noti_rw="1" rw="1"			 get_func="" set_func=""></param>
+                  <param name="ExternalIPAddress" 					 get_func=""></param>
+                  <param name="DNSServers"   		rw="1"			 get_func="" set_func=""></param>
+                  <param name="MACAddress"   		rw="1"	type="s" get_func="" set_func=""></param>
+                  <param name="ConnectionTrigger"	rw="1"			 get_func="" set_func=""></param>
+				  <object name="Stats">
+					<param name="EthernetBytesSent"   					 get_func=""></param>
+					<param name="EthernetBytesReceived"   				 get_func=""></param>
+					<param name="EthernetPacketsSent"   				 get_func=""></param>
+					<param name="EthernetPacketsReceived"   			 get_func=""></param>
+				  </object>
+                </object>
+              </object>
+            </object>
+          </object>
+        </object>
+      </object>
+      <object name="IPPingDiagnostics">
+        <param name="DiagnosticsState"    rw="1"          	get_func=""    set_func=""></param>
+        <param name="Interface"           rw="1"   			get_func=""  		   set_func=""></param>
+        <param name="Host"                rw="1"			get_func="" 			   set_func=""></param>
+        <param name="NumberOfRepetitions" rw="1"    get_func="" set_func=""></param>
+        <param name="Timeout"             rw="1"    get_func="" 			   set_func=""></param>
+        <param name="DataBlockSize"       rw="1"    get_func=""       set_func=""></param>
+        <param name="DSCP"                rw="1"    get_func="" 			   set_func=""></param>
+        <param name="SuccessCount"                  get_func=""></param>
+        <param name="FailureCount"                  get_func=""></param>
+        <param name="AverageResponseTime"           get_func=""></param>
+        <param name="MinimumResponseTime"           get_func=""></param>
+        <param name="MaximumResponseTime"           get_func=""></param>
+      </object>
+      <object name="TraceRouteDiagnostics">
+        <param name="DiagnosticsState"   rw="1"             get_func="" set_func=""></param>
+        <param name="Interface"          rw="1"    		    get_func="" 		  set_func=""></param>
+        <param name="Host"               rw="1" 			get_func="" 			  set_func=""></param>
+        <param name="NumberOfTries"      rw="1"     get_func="" 	  set_func=""></param>
+        <param name="Timeout"            rw="1"     get_func="" 		  set_func=""></param>
+        <param name="DataBlockSize"      rw="1"     get_func="" 	  set_func=""></param>
+        <param name="DSCP"               rw="1"     get_func="" 			  set_func=""></param>
+        <param name="MaxHopCount"        rw="1"     get_func="" 	  set_func=""></param>
+        <param name="ResponseTime"                	get_func=""></param>
+        <param name="RouteHopsNumberOfEntries"      get_func=""></param>
+        <object name="RouteHops" refresh_func="cpe_refresh_igd_routehops">
+          <object name="{i}">
+            <param name="HopHost"              				get_func=""></param>
+            <param name="HopHostAddress"              		get_func=""></param>
+            <param name="HopErrorCode"           	get_func=""></param>
+            <param name="HopRTTimes"              			get_func=""></param>
+          </object>
+        </object>
+      </object>
+     
+      
+    </object>
+  </model>
+  
+  
+  
+  
+  <inform>
+    <paramlist>
+      <param name="" />
+      
+    </paramlist>
+  </inform>
+  <rpc>
+
+  
+  </rpc>
+ 
+</cwmp>

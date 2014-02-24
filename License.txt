@@ -1,0 +1,22 @@
+Copyright (c) 2010, kongdai.com.
+All Rights Reserved.
+IMPORTANT: THIS SOFTWARE END USER LICENSE AGREEMENT("EULA") IS A LEGAL AGREEMENT BETWEEN YOU AND KONGDAI.COM . READ IT CAREFULLY BEFORE COMPLETING THE INSTALLATION PROCESS AND USING THE SOFTWARE. IT PROVIDES A LICENSE TO USE THE SOFTWARE AND CONTAINS WARRANTY INFORMATION AND LIABILITY DISCLAIMERS. BY INSTALLING AND USING THE SOFTWARE, YOU ARE CONFIRMING YOUR ACCEPTANCE OF THE SOFTWARE AND AGREEING TO BECOME BOUND BY THE TERMS OF THIS AGREEMENT. IF YOU DO NOT AGREE TO BE BOUND BY THESE TERMS, PLEASE DO NOT INSTALL OR USE THE SOFTWARE. YOU MUST ASSUME THE ENTIRE RISK OF USING THIS PROGRAM. 
+
+THIS EULA SHALL APPLY ONLY TO NTECWMP SOFTWARE VERSION 1.3.X . KONGDAI.COM RETAINS OWNERSHIP OF THE SOFTWARE AND ANY COPIES OF IT, REGARDLESS OF THE FORM IN WHICH THE COPIES MAY EXIST.
+
+License Grants:
+    1、You may use the Software for free for non-commercial use under the License Restrictions.
+    2、You may modify the source code(if being provieded) or interface of the Software to fit your product under the License Restrictions.
+    3、You have property of all members¨ information and articles in the Bulletin Board powered by the Software; meanwhile, you need assume all relevant legal duty by yourself.
+    4、You may use the Software for commercial use after purchasing the commercial license. Moreover, according to the license you purchased you may get specified term, manner and content of technical support from relively.com Commercial users are prior to submiting ideas and opinions to relively.com, but without any guarantee of acceptance.
+
+License Restrictions��
+    1、You may not rent, lease, sublicense, sell, assign, pledge the Software and its services.    
+    2、You may not modify the Software to create derivative works for redistribution based upon the Software.
+    3、In the event that you fail to comply with this EULA, your license will be terminated.
+
+
+
+2010 www.kongdai.com   azhenglive@gmail.com
+
+
