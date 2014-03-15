@@ -3,7 +3,7 @@
  * Netcwmp/Opencwmp Project                                             *
  * A software client for enabling TR-069 in embedded devices (CPE).     *
  *                                                                      *
- * Copyright (C) 2008-2010  netcwmp.kongdai.com                         *
+ * Copyright (C) 2013-2014  netcwmp.netcwmp group                         *
  *                                                                      *
  * This program is free software; you can redistribute it and/or        *
  * modify it under the terms of the GNU General Public License          *
@@ -20,7 +20,7 @@
  * Free Software Foundation, Inc., 59 Temple Place, Suite 330,          *
  * Boston, MA  02111-1307 USA                                           *
  *                                                                      *
- * Copyright 2008-2010           Mr.x() <azhenglive@gmail.com>          *
+ * Copyright 2013-2014           Mr.x() <netcwmp@gmail.com>          *
  *                                                                      *
  ***********************************************************************/
 
@@ -31,4 +31,3 @@
 int cwmp_agent_analyse_session(cwmp_session_t * session);
 
 #endif
-

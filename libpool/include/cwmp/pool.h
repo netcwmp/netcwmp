@@ -4,9 +4,9 @@
  *                                                                      *
  * A software client for enabling TR-069 in embedded devices (CPE).     *
  *                                                                      *
- * Copyright (C) 2008-2010  netcwmp.kongdai.com                         *
+ * Copyright (C) 2013-2014 netcwmp group                         *
  *                                                                      *
- * Copyright 2008-2010           Mr.x() <azhenglive@gmail.com>          *
+ * Copyright 2013-2014           Mr.x() <netcwmp@gmail.com>          *
  *                                                                      *
  ***********************************************************************/
 

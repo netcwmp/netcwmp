@@ -2,10 +2,10 @@
  * Id: memory.c                                                         *
  *                                                                      *
  * TR069 Project:  A TR069 library in C                                 *
- * Copyright (C) 2008-2010  netcwmp.kongdai.com                                *
+ * Copyright (C) 2013-2014  netcwmp.netcwmp group                                *
  *                                                                      *
  *                                                                      *
- * Email: azhenglive ( & ) gmail dot com                                *
+ * Email: netcwmp ( & ) gmail dot com                                *
  *                                                                      *  
  ***********************************************************************/
  

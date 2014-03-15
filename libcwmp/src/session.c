@@ -2,14 +2,14 @@
  * Id: session.c                                                        *
  *                                                                      *
  * TR069 Project:  A TR069 library in C                                 *
- * Copyright (C) 2008-2010  netcwmp.kongdai.com                                *
+ * Copyright (C) 2013-2014 netcwmp group                                *
  *                                                                      *
  *                                                                      *
- * Email: azhenglive ( & ) gmail dot com                                *
- *                                                                      *  
+ * Email: netcwmp ( & ) gmail dot com                                *
+ *                                                                      *
  ***********************************************************************/
- 
- 
+
+
 #include "cwmp/session.h"
 #include "cwmp/cfg.h"
 #include "cwmp/log.h"
@@ -171,8 +171,8 @@ char * cwmp_data_get_parameter_value(cwmp_t * cwmp, parameter_node_t * root, con
     node = cwmp_get_parameter_node(root, name);
     if (!node)
         return NULL;
-	   
- 
+
+
      rc = cwmp_get_parameter_node_value(cwmp, node, name, &value, pool);
      if(rc == 0)
      {
@@ -252,7 +252,7 @@ int cwmp_session_get_localip(char *hostip)
     }
     cwmp_log_debug("hostname=%s\n", hostname);
     ////////////////
-    // ¸ù¾ÝÖ÷»úÃû»ñÈ¡Ö÷»úÐÅÏ¢.
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢.
     //
 
 
@@ -265,7 +265,7 @@ int cwmp_session_get_localip(char *hostip)
         return -1;
     }
     //////////////////
-    // ½âÎö·µ»ØµÄhostentÐÅÏ¢.
+    // ï¿½ï¿½ï¿½ò·µ»Øµï¿½hostentï¿½ï¿½Ï¢.
     //
 
     he = *pHostent;
@@ -278,8 +278,8 @@ int cwmp_session_get_localip(char *hostip)
     for (i=0; he.h_addr_list[i]; i++)
     {
         memcpy ( &sa.sin_addr.s_addr, he.h_addr_list[i],he.h_length);
-        // Êä³ö»úÆ÷µÄIPµØÖ·.
-        cwmp_log_debug("Address: %s\n", inet_ntoa(sa.sin_addr)); // ÏÔÊ¾µØÖ·´®
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IPï¿½ï¿½Ö·.
+        cwmp_log_debug("Address: %s\n", inet_ntoa(sa.sin_addr)); // ï¿½ï¿½Ê¾ï¿½ï¿½Ö·ï¿½ï¿½
         TRsnprintf(hostip, 20, "%s", inet_ntoa(sa.sin_addr));
         break;
     }
@@ -331,7 +331,7 @@ int cwmp_session_get_localip(char *hostip)
                 if (!(ioctl(fd,SIOCGIFHWADDR,(char*)&buf[intrface])))
                 {
 
-    
+
 		    sprintf(local_mac,"%02x:%02x:%02x:%02x:%02x:%02x",
                             (unsigned char)buf[intrface].ifr_hwaddr.sa_data[0],
                             (unsigned char)buf[intrface].ifr_hwaddr.sa_data[1],
@@ -422,7 +422,7 @@ int cwmp_session_open(cwmp_session_t * session)
     }
     session->envpool = envpool;
     session->env->pool = envpool;
-    
+
 
     //pool_cleanup_add(envpool, cwmp_chunk_clear, session->writers);
     //pool_cleanup_add(envpool, cwmp_chunk_clear, session->readers);
@@ -490,12 +490,12 @@ int cwmp_session_create_connection(cwmp_session_t * session)
     {
         if(strncmp(dest->scheme, "https", 5) == 0)
         {
-            use_ssl = 1;    
-            
+            use_ssl = 1;
+
         }
     }
     cwmp_log_info("session connect using ssl?(%s)\n", use_ssl==1?"yes":"no");
-        
+
 
 
         int rc = http_socket_create(&sock, AF_INET, SOCK_STREAM, 0, session->connpool);
@@ -504,42 +504,42 @@ int cwmp_session_create_connection(cwmp_session_t * session)
             cwmp_log_error("session connect: create socket error.");
             return rc;
         }
-    
 
-    
+
+
 		cwmp_log_debug("dest host: %s, dest port: %d", session->dest->host, session->dest->port);
-    
+
        	http_socket_set_sendtimeout(sock, 10);
-        
+
         rc = http_socket_connect(sock, AF_INET, session->dest->host, session->dest->port);
         if(rc != CWMP_OK)
         {
             cwmp_log_alert("connect to ACS faild. Host is %s:%d.", session->dest->host, session->dest->port);
             return rc;
         }
-        
-        
+
+
         if(use_ssl)
         {
-#ifdef USE_CWMP_OPENSSL                     
+#ifdef USE_CWMP_OPENSSL
             SSL *ssl = openssl_connect(cwmp->ssl_ctx, sock->sockdes);
             if(ssl)
             {
                sock->ssl = ssl;
-               sock->use_ssl = 1; 
+               sock->use_ssl = 1;
             }
 #endif
-            
-            //check_cert(ssl,host);      
+
+            //check_cert(ssl,host);
         }
-        
-        
+
+
         http_socket_set_writefunction(sock, cwmp_session_write_callback, session);
         if(session->timeout > 0)
         {
             http_socket_set_recvtimeout(sock, session->timeout);
         }
-    
+
     session->sock = sock;
 
     return CWMP_OK;
@@ -957,7 +957,7 @@ xmldoc_t *  cwmp_session_create_download_response_message(cwmp_session_t * sessi
     }
 
     download_arg_t * dlarg;
-	
+
     rv = cwmp_parse_download_message(session->env, doc, &dlarg, &fault);
 
     //add download arg to taskqueue
@@ -977,10 +977,10 @@ xmldoc_t *  cwmp_session_create_download_response_message(cwmp_session_t * sessi
     }
 
    int status = 1;
-	
+
    return cwmp_create_download_response_message(session->env, header, status);
 
-	
+
 
 }
 
@@ -998,7 +998,7 @@ xmldoc_t *  cwmp_session_create_upload_response_message(cwmp_session_t * session
     }
 
     upload_arg_t * uparg;
-	
+
     rv = cwmp_parse_upload_message(session->env, doc, &uparg, &fault);
 
    if(rv == CWMP_OK)
@@ -1100,7 +1100,7 @@ xmldoc_t *  cwmp_session_create_factoryreset_response_message(cwmp_session_t * s
     {
         cwmp_log_error("no header node \n");
     }
-    
+
     cwmp_t * cwmp = session->cwmp;
     queue_push(cwmp->queue, NULL, TASK_FACTORYRESET_TAG);
 
@@ -1214,9 +1214,3 @@ int cwmp_session_recv_response(cwmp_session_t * session)
 
 
 }
-
-
-
-
-
-
