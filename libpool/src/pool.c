@@ -11,7 +11,7 @@
 #define POOL_ALIGNMENT sizeof(unsigned long)
 #define pool_align(d, a)     (((d) + (a - 1)) & ~(a - 1))
 #define pool_align_ptr(p, a)                                                   \
-	(unsigned char *) (((unsigned int) (p) + ((unsigned int) a - 1)) & ~((unsigned int) a - 1))
+	(unsigned char *) (((unsigned int) (p) + ((unsigned int) a - 1)) & ~((unsigned long) a - 1))
 
 #ifdef WIN32
 #define close_fd    closesocket
