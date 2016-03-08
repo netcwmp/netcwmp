@@ -1796,7 +1796,8 @@ xmlnode_t * cwmp_create_event_node(env_t * env ,  xmlnode_t * parent, const even
 	if (pe[count]->event == INFORM_MREBOOT ) //|| pe[count]->event == INFORM_BOOTSTRAP)
 	{
         	ESA(eventCommandKeyNode, cwmp_xml_create_child_node(env ,  eventStructNode, NULL, "CommandKey", pe[count]->command_key));
-	}
+
+	}
 	else
 	{
 		ESA(eventCommandKeyNode, cwmp_xml_create_child_node(env ,  eventStructNode, NULL, "CommandKey", NULL));
@@ -2483,7 +2484,7 @@ xmldoc_t* cwmp_create_faultcode_response_message(env_t * env , header_t * header
 
     ESA(newNode, cwmp_xml_create_child_node(env ,  faultStructNode, NULL, "faultstring", "Client fault"));
 
-    ESA(detailNode, cwmp_xml_create_child_node(env ,  newNode, NULL, "detail", NULL));
+    ESA(detailNode, cwmp_xml_create_child_node(env ,  faultStructNode, NULL, "detail", NULL));
     ESA(faultNode, cwmp_xml_create_child_node(env ,  detailNode, NULL, "cwmp:Fault", NULL));
 
 
@@ -2552,7 +2553,7 @@ xmldoc_t* cwmp_create_faultcode_setparametervalues_response_message(env_t * env 
 
     ESA(newNode, cwmp_xml_create_child_node(env ,  faultStructNode, NULL, "faultstring", "Client fault"));
 
-    ESA(detailNode, cwmp_xml_create_child_node(env ,  newNode, NULL, "detail", NULL));
+    ESA(detailNode, cwmp_xml_create_child_node(env ,  faultStructNode, NULL, "detail", NULL));
     ESA(faultNode, cwmp_xml_create_child_node(env ,  detailNode, NULL, "cwmp:Fault", NULL));
 
 
