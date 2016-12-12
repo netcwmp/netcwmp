@@ -33,8 +33,8 @@
 #define PFREE(p)                        pool_pfree(pool, p)
 
 
-#define POOL_MAX_ALLOC_FROM_POOL  (1024 - 1)
-#define POOL_DEFAULT_SIZE    (1024)
+#define POOL_MAX_ALLOC_FROM_POOL  (4096 - 1)
+#define POOL_DEFAULT_SIZE    (4096)
 #define POOL_MIN_SIZE        	(128)
 
 
